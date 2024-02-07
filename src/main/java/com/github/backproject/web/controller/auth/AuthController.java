@@ -20,7 +20,7 @@ public class AuthController {
     @PostMapping("/sign")
     public String signUp(@RequestBody SignUp signUpRequest) {
         boolean isSuccess = authService.signUp(signUpRequest);
-        return isSuccess ? "회원가입을 성공했습니다." : "회원가입 실패하였습니다.";
+        return isSuccess ? "회원가입을 하셨습니다" : "회원가입 실패하였습니다.";
     }
 
     @PostMapping("/login")
