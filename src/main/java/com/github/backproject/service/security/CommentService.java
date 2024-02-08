@@ -51,15 +51,18 @@ public class CommentService {
 
     @Transactional
     public CommentDto create(Long postId, CommentDto dto){
-            //  1.게시글 조회 및 예외 발생
+        // 1.게시글 조회 및 예외 발생
         Post post = postRepository.findById(postId)
-                .orElseThrow(()-> new IllegalArgumentException("댓글 생성 실패!" +
+                .orElseThrow(() -> new IllegalArgumentException("댓글 생성 실패! " +
                         "대상 게시글이 없습니다."));
-            //  2. 댓글 엔티티 생성
-        Comment comment = Comment.creatComment(dto, post);
-            //  3. 댓글 엔티티 db 저장
+
+        // 2. 댓글 엔티티 생성
+        Comment comment = Comment.createComment(dto, post);
+
+        // 3. 댓글 엔티티 db 저장
         Comment created = commentRepository.save(comment);
-            //  4.DTO 로 변환해서 반환
+
+        // 4. DTO 로 변환해서 반환
         return CommentDto.createCommentDto(created);
     }
 

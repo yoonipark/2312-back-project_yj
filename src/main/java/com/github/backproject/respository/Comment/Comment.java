@@ -25,7 +25,7 @@ public class Comment {
     private String nickname;//댓글 단 사람
     @Column
     private String body; //댓글 본문
-    public static Comment creatComment(CommentDto dto, Post post) {
+    public static Comment createComment(CommentDto dto, Post post) {
         //예외 발생
         if (dto.getId() != null)
             throw new IllegalArgumentException("댓글 생성 실패! 댓글의 id가 없어야 합니다");
@@ -40,6 +40,7 @@ public class Comment {
                 dto.getBody() // 댓글 본문
         );
     }
+
     public void patch(CommentDto dto){
         //예외발생
         if(this.id != dto.getId())
